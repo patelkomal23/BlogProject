@@ -1,0 +1,111 @@
+<%- include('../partials/header.ejs') %>
+
+<style>
+  /* Page Title */
+  .page-title-custom {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  /* Blog Card Grid */
+  .blog-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    border: none;
+    background: #fff;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+
+  .blog-card img {
+    border-bottom: 1px solid #eee;
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .blog-card .card-body {
+    padding: 18px;
+    min-height: 180px; /* Makes cards equal height */
+  }
+
+  .blog-card h5 {
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 10px;
+  }
+
+  .blog-card p {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .blog-buttons a {
+    width: 48%;
+  }
+
+  .blog-buttons .btn-danger {
+    background-color: #e74c3c;
+    border: none;
+  }
+
+  .blog-buttons .btn-warning {
+    background-color: #f1c40f;
+    border: none;
+    color: #000;
+    font-weight: 600;
+  }
+
+  /* Grid spacing */
+  .blog-wrapper {
+    margin-top: 30px;
+  }
+</style>
+
+<div class="page-wrapper">
+
+  <div class="page-breadcrumb">
+    <div class="row">
+      <div class="col-12 d-flex no-block align-items-center">
+        <h3 class="page-title-custom">Blog Listing</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid blog-wrapper">
+    <div class="row">
+
+      <% blogs.forEach((blog) => { %>
+
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="card blog-card">
+
+            <img src="<%= blog.image %>" alt="<%= blog.title %>">
+
+            <div class="card-body">
+              <h5><%= blog.title %></h5>
+
+              <p><strong>Category:</strong> <%= blog.category %></p>
+
+              <div class="d-flex justify-content-between blog-buttons mt-3">
+                <a href="/delete-blog/<%= blog._id %>" class="btn btn-danger btn-sm">Delete</a>
+                <a href="/update-blog/<%= blog._id %>" class="btn btn-warning btn-sm">Update</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      <% }) %>
+
+    </div>
+  </div>
+
+</div>
+
+<%- include('../partials/footer.ejs') %>
