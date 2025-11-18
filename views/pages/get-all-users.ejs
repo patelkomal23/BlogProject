@@ -1,98 +1,144 @@
 <%- include('../partials/header.ejs') %>
-      <!-- ============================================================== -->
-      <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-      <!-- ============================================================== -->
-      <!-- ============================================================== -->
-      <!-- Page wrapper  -->
-      <!-- ============================================================== -->
-      <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="page-breadcrumb">
-          <div class="row">
-            <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Tables</h4>
-              <div class="ms-auto text-end">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                      Library
-                    </li>
-                  </ol>
-                </nav>
-              </div>
-            </div>
+  <style>
+    /* ---------- CARD DESIGN ---------- */
+    .custom-card {
+      border-radius: 15px;
+      padding: 20px;
+      background: #fff;
+      border: none;
+      transition: 0.3s ease-in-out;
+    }
+
+    .custom-card:hover {
+      transform: translateY(-3px);
+    }
+
+    /* ---------- TABLE DESIGN ---------- */
+    .custom-table {
+      border-radius: 10px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .custom-table thead {
+      background: #343a40 !important;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .custom-table tbody tr {
+      transition: 0.2s;
+    }
+
+    .custom-table tbody tr:hover {
+      background-color: #f4f7ff;
+      transform: scale(1.01);
+    }
+
+    /* ---------- BUTTONS ---------- */
+    .custom-btn {
+      padding: 6px 15px;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: 0.3s ease-in-out;
+    }
+
+    .custom-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* ---------- BREADCRUMB ---------- */
+    .page-breadcrumb .breadcrumb {
+      background: transparent;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-title {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    /* ---------- BADGE ---------- */
+    .badge {
+      font-size: 14px;
+      border-radius: 30px;
+    }
+  </style>
+  <!-- ============================================================== -->
+  <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper custom-page">
+    <div class="page-breadcrumb">
+      <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+          <h4 class="page-title">Users Table</h4>
+          <div class="ms-auto text-end">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Users</li>
+              </ol>
+            </nav>
           </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid">
-          <!-- ============================================================== -->
-          <!-- Start Page Content -->
-          <!-- ============================================================== -->
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Basic Datatable</h5>
-                  <div class="table-responsive">
-                    <table
-                      id="zero_config"
-                      class="table table-striped table-bordered"
-                    >
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          <% users.forEach((user)=>{ %>
-                              <tr>
-                                <td><%= user.name %></td>
-                                <td>
-                                  <% if(user.isActive) { %> 
-                                    <a href="deactive/<%= user.id %>" class="btn btn-outline-danger">Deactive</a>  
-                                  <% } else { %> 
-                                     <a href="active/<%= user.id %>" class="btn btn-outline-success">Active</a>   
-                                  <% } %>
-                                </td>
-                              </tr>
-                          <%})%>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <th>Name</th>
-                          <th>Action</th>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="card shadow-lg custom-card">
+        <div class="card-body">
+          <h5 class="card-title mb-4">Manage User Status</h5>
+
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered custom-table">
+              <thead class="table-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% users.forEach((user)=>{ %>
+                  <tr>
+                    <td>
+                      <%= user.name %>
+                    </td>
+
+                    <td>
+                      <% if(user.isActive) { %>
+                        <span class="badge bg-success px-3 py-2">Active</span>
+                        <% } else { %>
+                          <span class="badge bg-danger px-3 py-2">Inactive</span>
+                          <% } %>
+                    </td>
+
+                    <td>
+                      <% if(user.isActive) { %>
+                        <a href="deactive/<%= user.id %>" class="btn btn-danger btn-sm custom-btn">
+                          Deactivate
+                        </a>
+                        <% } else { %>
+                          <a href="active/<%= user.id %>" class="btn btn-success btn-sm custom-btn">
+                            Activate
+                          </a>
+                          <% } %>
+                    </td>
+                  </tr>
+                  <% }) %>
+              </tbody>
+
+            </table>
           </div>
-          <!-- ============================================================== -->
-          <!-- End PAge Content -->
-          <!-- ============================================================== -->
-          <!-- ============================================================== -->
-          <!-- Right sidebar -->
-          <!-- ============================================================== -->
-          <!-- .right-sidebar -->
-          <!-- ============================================================== -->
-          <!-- End Right sidebar -->
-          <!-- ============================================================== -->
+
         </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <%- include('../partials/footer.ejs') %>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../partials/footer.ejs') %>
