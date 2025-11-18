@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
@@ -12,7 +11,7 @@
   "devDependencies": {
     "nodemon": "^3.1.11"
   },
-  "name": "pr-6-movie",
+  "name": "pr-7-movie-website",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

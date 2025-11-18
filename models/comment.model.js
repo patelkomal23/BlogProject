@@ -4,7 +4,7 @@ const commentSchema = new mongoose.Schema({
     message : {
         type : String
     },
-    userId :{
+    userId : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "userModel",
         required : true
@@ -13,5 +13,4 @@ const commentSchema = new mongoose.Schema({
 
 const CommentModel = mongoose.model('commentModel',commentSchema);
 
-export default CommentModel;
-
+export default CommentModel

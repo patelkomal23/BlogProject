@@ -11,7 +11,7 @@ const blogSchema = new mongoose.Schema({
     },
     description : {
         type : String,
-        required : true,
+        required : true
     },
     category : {
         type : String,
@@ -21,7 +21,7 @@ const blogSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : "userModel"
     },
-    comment :{
+    comment : {
         type : Array
     }
 })
@@ -29,4 +29,3 @@ const blogSchema = new mongoose.Schema({
 const BlogModel = mongoose.model('blogModel',blogSchema);
 
 export default BlogModel;
-

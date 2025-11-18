@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 
-const userAuth = async(req,res,next)=>{
+const userAuth = async (req,res,next) =>{
+
     const {id} = req.cookies;
 
     const user = await User.findById(id);
@@ -8,7 +9,7 @@ const userAuth = async(req,res,next)=>{
     if(user){
         res.locals.user = user;
         next();
-    }else{
+    } else {
         return res.redirect('/login');
     }
 }

@@ -58,9 +58,9 @@
                                 <td><%= user.name %></td>
                                 <td>
                                   <% if(user.isActive) { %> 
-                                    <a href="/deactive/<%= user.id %>" class="btn btn-outline-danger">Deactive</a>  
+                                    <a href="deactive/<%= user.id %>" class="btn btn-outline-danger">Deactive</a>  
                                   <% } else { %> 
-                                    <a href="/active/<%= user.id %>" class="btn btn-outline-success">Active</a>   
+                                     <a href="active/<%= user.id %>" class="btn btn-outline-success">Active</a>   
                                   <% } %>
                                 </td>
                               </tr>
@@ -95,4 +95,4 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-<%- include('../partials/footer.ejs') %>
+        <%- include('../partials/footer.ejs') %>

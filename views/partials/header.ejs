@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
@@ -15,6 +16,7 @@
     />
     <meta name="robots" content="noindex,nofollow" />
     <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- Favicon icon -->
     <link
       rel="icon"
@@ -65,7 +67,7 @@
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
-            <a class="navbar-brand" href="/index">
+            <a class="navbar-brand" href="index.html">
               <!-- Logo icon -->
               <b class="logo-icon ps-2">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -220,12 +222,7 @@
                   <i class="font-24 mdi mdi-comment-processing"></i>
                 </a>
                 <ul
-                  class="
-                    dropdown-menu dropdown-menu-end
-                    mailbox
-                    animated
-                    bounceInDown
-                  "
+                  class="dropdown-menu dropdown-menu-end mailbox animated bounceInDown"
                   aria-labelledby="2"
                 >
                   <ul class="list-style-none">
@@ -235,12 +232,7 @@
                         <a href="javascript:void(0)" class="link border-top">
                           <div class="d-flex no-block align-items-center p-10">
                             <span
-                              class="
-                                btn btn-success btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
+                              class="btn btn-success btn-circle d-flex align-items-center justify-content-center"
                               ><i class="mdi mdi-calendar text-white fs-4"></i
                             ></span>
                             <div class="ms-2">
@@ -255,12 +247,7 @@
                         <a href="javascript:void(0)" class="link border-top">
                           <div class="d-flex no-block align-items-center p-10">
                             <span
-                              class="
-                                btn btn-info btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
+                              class="btn btn-info btn-circle d-flex align-items-center justify-content-center"
                               ><i class="mdi mdi-settings fs-4"></i
                             ></span>
                             <div class="ms-2">
@@ -275,12 +262,7 @@
                         <a href="javascript:void(0)" class="link border-top">
                           <div class="d-flex no-block align-items-center p-10">
                             <span
-                              class="
-                                btn btn-primary btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
+                              class="btn btn-primary btn-circle d-flex align-items-center justify-content-center"
                               ><i class="mdi mdi-account fs-4"></i
                             ></span>
                             <div class="ms-2">
@@ -295,12 +277,7 @@
                         <a href="javascript:void(0)" class="link border-top">
                           <div class="d-flex no-block align-items-center p-10">
                             <span
-                              class="
-                                btn btn-danger btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
+                              class="btn btn-danger btn-circle d-flex align-items-center justify-content-center"
                               ><i class="mdi mdi-link fs-4"></i
                             ></span>
                             <div class="ms-2">
@@ -325,13 +302,7 @@
               <!-- ============================================================== -->
               <li class="nav-item dropdown">
                 <a
-                  class="
-                    nav-link
-                    dropdown-toggle
-                    text-muted
-                    waves-effect waves-dark
-                    pro-pic
-                  "
+                  class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic"
                   href="#"
                   id="navbarDropdown"
                   role="button"
@@ -350,7 +321,7 @@
                   aria-labelledby="navbarDropdown"
                 >
                   <a class="dropdown-item" href="javascript:void(0)"
-                    ><i class="mdi mdi-account me-1 ms-1"></i><%= user.name %></a
+                    ><i class="mdi mdi-account me-1 ms-1"></i> <%= user.name %></a
                   >
                   <a class="dropdown-item" href="javascript:void(0)"
                     ><i class="mdi mdi-wallet me-1 ms-1"></i> My Balance</a
@@ -405,67 +376,64 @@
                   ><span class="hide-menu">Dashboard</span></a
                 >
               </li>
-
-              <% if(user.role == 'admin') { %>
+              <% if(user.role == 'admin') {%>
                 <li class="sidebar-item">
-                  <a
-                    class="sidebar-link has-arrow waves-effect waves-dark"
-                    href="javascript:void(0)"
-                    aria-expanded="false"
-                    ><i class="mdi mdi-receipt"></i
-                    ><span class="hide-menu">Users </span></a
-                  >
-                  <ul aria-expanded="false" class="collapse first-level">
-                    <li class="sidebar-item">
-                      <a
-                        class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="/get-all-users"
-                        aria-expanded="false"
-                        ><i class="mdi mdi-border-inside"></i
-                        ><span class="hide-menu">View Users</span></a
-                      >
-                    </li>
-                  </ul>
-                </li>
+                <a
+                  class="sidebar-link has-arrow waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  aria-expanded="false"
+                  ><i class="bi bi-people-fill"></i><span class="hide-menu">Users </span></a
+                >
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a
+                      class="sidebar-link waves-effect waves-dark sidebar-link"
+                      href="/get-all-users"
+                      aria-expanded="false"
+                      ><i class="mdi mdi-border-inside"></i
+                      ><span class="hide-menu">View Users</span></a
+                    >
+                  </li>
+                </ul>
+              </li>  
               <% } %>
               <li class="sidebar-item">
-                  <a
-                    class="sidebar-link has-arrow waves-effect waves-dark"
-                    href="javascript:void(0)"
-                    aria-expanded="false"
-                    ><i class="mdi mdi-receipt"></i
-                    ><span class="hide-menu">Blogs </span></a
-                  >
-                  <ul aria-expanded="false" class="collapse first-level">
-                    <li class="sidebar-item">
-                      <a
-                        class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="/add-blog"
-                        aria-expanded="false"
-                        ><i class="mdi mdi-border-inside"></i
-                        ><span class="hide-menu">Add Blogs</span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a
-                        class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="/get-all-myblogs"
-                        aria-expanded="false"
-                        ><i class="mdi mdi-border-inside"></i
-                        ><span class="hide-menu">View My Blogs</span></a
-                      >
-                    </li>
-                    <li class="sidebar-item">
-                      <a
-                        class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="/get-all-blogs"
-                        aria-expanded="false"
-                        ><i class="mdi mdi-border-inside"></i
-                        ><span class="hide-menu">View All Blogs</span></a
-                      >
-                    </li>
-                  </ul>
-                </li>
+                <a
+                  class="sidebar-link has-arrow waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  aria-expanded="false"
+                  ><i class="bi bi-people-fill"></i><span class="hide-menu">Blogs </span></a
+                >
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a
+                      class="sidebar-link waves-effect waves-dark sidebar-link"
+                      href="/add-blog"
+                      aria-expanded="false"
+                      ><i class="mdi mdi-border-inside"></i
+                      ><span class="hide-menu">Add Blog</span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a
+                      class="sidebar-link waves-effect waves-dark sidebar-link"
+                      href="/get-all-myblogs"
+                      aria-expanded="false"
+                      ><i class="mdi mdi-border-inside"></i
+                      ><span class="hide-menu">View My Blogs</span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a
+                      class="sidebar-link waves-effect waves-dark sidebar-link"
+                      href="/get-all-blogs"
+                      aria-expanded="false"
+                      ><i class="mdi mdi-border-inside"></i
+                      ><span class="hide-menu">View All Blogs</span></a
+                    >
+                  </li>
+                </ul>
+              </li> 
             </ul>
           </nav>
           <!-- End Sidebar navigation -->
