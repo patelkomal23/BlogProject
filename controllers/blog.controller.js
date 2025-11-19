@@ -23,6 +23,7 @@ const blogController = {
         try {
             const id = res.locals.user.id;
             const blogs = await BlogModel.find({ userId: id });
+            console.log(blogs);
             return res.render('./pages/get-all-myblogs.ejs', { blogs });
         } catch (error) {
             console.log(error.message);
@@ -32,18 +33,17 @@ const blogController = {
 
     async getAllBlogs(req, res) {
         const blogs = await BlogModel.find({});
-        return res.render('./pages/get-all-blogs.ejs', { blogs });
+        console.log(blogs);
+        return res.render('./pages/get-all-blogs.ejs', {
+            blogs
+        })
     },
 
     async deleteBlog(req, res) {
         try {
             const id = req.params.id;
             const blog = await BlogModel.findById(id);
-
-            if (blog.image && fs.existsSync(blog.image)) {
-                fs.unlinkSync(blog.image);
-            }
-
+            fs.unlinkSync(blog.image);
             await BlogModel.findByIdAndDelete(id);
             return res.redirect(req.get('Referrer') || '/');
         } catch (error) {
@@ -52,34 +52,37 @@ const blogController = {
         }
     },
 
-    async updateBlogPage(req, res) {
+    async updateBlogPage(req,res){
         try {
-            const { id } = req.params;
+            const {id} = req.params;
             const blog = await BlogModel.findById(id);
-            return res.render('./pages/edit-blog.ejs', { blog });
+            return res.render('./pages/edit-blog.ejs',{
+                blog
+            })
         } catch (error) {
             console.log(error.message);
         }
     },
 
-    // ✅ MISSING FUNCTION (added now)
-    async updateBlog(req, res) {
+    async updateBlog(req,res){
         try {
-            const id = req.params.id;
-            const data = req.body;
-
-            // if new image uploaded
-            if (req.file) {
-                data.image = req.file.path;
+            const {id} = req.params;
+            const blog = await BlogModel.findById(id)
+            if(req.file){
+                try {
+                   fs.unlinkSync(blog.image); 
+                } catch (error) {
+                    console.log(error.message)
+                }
+                req.body.image = req.file.path;
             }
+            await BlogModel.findByIdAndUpdate(id,req.body);
 
-            await BlogModel.findByIdAndUpdate(id, data);
-            return res.redirect(req.get('Referrer') || '/');
+            return res.redirect('/get-all-myblogs')
         } catch (error) {
-            console.log(error.message);
-            return res.redirect(req.get('Referrer') || '/');
+            console.log(error.message)
         }
     }
-};
+}
 
 export default blogController;

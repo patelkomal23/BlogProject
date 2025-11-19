@@ -1,19 +1,18 @@
 {
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "bun.lock": "^0.0.0",
-    "cookie-parse": "^0.4.0",
+    "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
-    "mongoose": "^8.20.0",
+    "mongoose": "^8.19.2",
     "multer": "^2.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
   },
-  "name": "pr-7-movie-website",
+  "name": "pr-6-movie",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
